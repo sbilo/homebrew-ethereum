@@ -16,10 +16,10 @@
 require 'formula'
 
 class CppEthereum < Formula
-  version '0.9.41'
+  version '0.9.41-genoil-1.0.0'
 
   homepage 'http://cpp-ethereum.org'
-  url 'https://github.com/Genoil/cpp-ethereum.git', :branch => 'master'
+  url 'https://github.com/Genoil/cpp-ethereum.git', :branch => '110'
 
   option "without-evmjit", "Build without JIT (and its LLVM dependency)"
   option "with-debug", "Build with debug"
