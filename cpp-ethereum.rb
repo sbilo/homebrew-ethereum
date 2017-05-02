@@ -16,26 +16,14 @@
 require 'formula'
 
 class CppEthereum < Formula
-  version '1.3.0'
+  version '0.9.41'
 
   homepage 'http://cpp-ethereum.org'
-  url 'https://github.com/ethereum/cpp-ethereum.git', :branch => 'develop'
-
-  devel do
-
-    if build.include? "successful"
-      version '1.3.0'
-      url 'https://github.com/ethereum/cpp-ethereum.git', :revision => '4943d3eeae865537e18c410e5e7d064825bf2711'
-    else
-      version '1.3.0'
-      url 'https://github.com/ethereum/cpp-ethereum.git', :branch => 'develop'
-    end
-  end
+  url 'https://github.com/Genoil/cpp-ethereum.git', :branch => 'master'
 
   option "without-evmjit", "Build without JIT (and its LLVM dependency)"
   option "with-debug", "Build with debug"
   option "with-vmtrace", "Build with VMTRACE"
-  option "successful", "Last successful build with --devel only"
 
   depends_on 'boost'
   depends_on 'cmake' => :build
@@ -61,6 +49,8 @@ class CppEthereum < Formula
     end
 
     args << "-DVMTRACE=1" if build.with? "vmtrace"
+    
+    args << "-DBUNDLE=miner"
 
     system "cmake", *args
     system "make"
